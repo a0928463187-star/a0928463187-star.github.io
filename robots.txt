@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /content/
+Disallow: /scripts/
+Disallow: /README.md
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /content/
+Disallow: /scripts/
+Disallow: /README.md
+
+Sitemap: https://a0928463187-star.github.io/sitemap.xml
