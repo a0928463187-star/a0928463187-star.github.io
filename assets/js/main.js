@@ -40,14 +40,87 @@
         await navigator.clipboard.writeText(window.location.href);
         if (status) status.textContent = "已複製本頁連結";
       } catch {
-        window.prompt("請複製下方網址", window.location.href);
-        if (status) status.textContent = "已顯示可複製網址";
+        if (status) status.textContent = "無法自動複製，請使用瀏覽器網址列";
       }
       window.setTimeout(() => {
         if (status) status.textContent = "";
       }, 3200);
     });
   });
+
+  const timeline = document.querySelector("[data-timeline-track]");
+  if (timeline) {
+    const cards = [...timeline.querySelectorAll(".timeline-item")];
+    const previous = document.querySelector("[data-timeline-prev]");
+    const next = document.querySelector("[data-timeline-next]");
+    const position = document.querySelector("[data-timeline-position]");
+    const desktop = window.matchMedia("(min-width: 781px)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let pointerStart = null;
+    let lastPosition = 0;
+
+    const nearestCard = () => {
+      const start = timeline.scrollLeft;
+      return cards.reduce((best, card, index) =>
+        Math.abs(card.offsetLeft - start) <
+        Math.abs(cards[best].offsetLeft - start) ? index : best, 0);
+    };
+
+    const updateControls = () => {
+      if (!desktop.matches) return;
+      lastPosition = nearestCard();
+      if (position) position.textContent = `第 ${lastPosition + 1} / ${cards.length} 段`;
+      if (previous) previous.disabled = lastPosition === 0;
+      if (next) next.disabled = lastPosition === cards.length - 1;
+    };
+
+    const showCard = (index) => {
+      if (!desktop.matches) return;
+      const target = Math.max(0, Math.min(cards.length - 1, index));
+      timeline.scrollTo({
+        left: cards[target].offsetLeft,
+        behavior: reducedMotion.matches ? "auto" : "smooth",
+      });
+      lastPosition = target;
+      if (position) position.textContent = `第 ${target + 1} / ${cards.length} 段`;
+      if (previous) previous.disabled = target === 0;
+      if (next) next.disabled = target === cards.length - 1;
+    };
+
+    previous?.addEventListener("click", () => showCard(lastPosition - 1));
+    next?.addEventListener("click", () => showCard(lastPosition + 1));
+    timeline.addEventListener("scroll", updateControls, { passive: true });
+    window.addEventListener("resize", updateControls);
+    timeline.addEventListener("keydown", (event) => {
+      if (!desktop.matches || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+      event.preventDefault();
+      showCard(lastPosition + (event.key === "ArrowRight" ? 1 : -1));
+    });
+
+    timeline.addEventListener("pointerdown", (event) => {
+      if (!desktop.matches || event.pointerType !== "mouse" || event.button !== 0) return;
+      pointerStart = { x: event.clientX, scrollLeft: timeline.scrollLeft };
+      timeline.setPointerCapture(event.pointerId);
+    });
+    timeline.addEventListener("pointermove", (event) => {
+      if (!pointerStart) return;
+      const delta = event.clientX - pointerStart.x;
+      if (Math.abs(delta) < 4 && !timeline.classList.contains("is-dragging")) return;
+      timeline.classList.add("is-dragging");
+      timeline.scrollLeft = pointerStart.scrollLeft - delta;
+      event.preventDefault();
+    });
+    const finishDrag = () => {
+      if (!pointerStart) return;
+      pointerStart = null;
+      timeline.classList.remove("is-dragging");
+      updateControls();
+    };
+    timeline.addEventListener("pointerup", finishDrag);
+    timeline.addEventListener("pointercancel", finishDrag);
+    timeline.addEventListener("lostpointercapture", finishDrag);
+    updateControls();
+  }
 
   const gallery = document.querySelector("[data-gallery]");
   if (gallery) {
@@ -92,9 +165,11 @@
     const image = dialog.querySelector("[data-dialog-image]");
     const title = dialog.querySelector("#dialog-title");
     const reference = dialog.querySelector("[data-dialog-reference]");
+    let lastTrigger = null;
 
     document.querySelectorAll(".credential-open").forEach((button) => {
       button.addEventListener("click", () => {
+        lastTrigger = button;
         const itemTitle = button.dataset.title ?? "紀錄原圖";
         image.src = button.dataset.full;
         image.alt = `${itemTitle}原圖`;
@@ -109,17 +184,26 @@
           reference.hidden = true;
         }
 
+        document.body.classList.add("dialog-open");
         dialog.showModal();
       });
     });
 
     const closeDialog = () => {
-      dialog.close();
-      image.removeAttribute("src");
-      image.alt = "";
+      if (dialog.open) dialog.close();
     };
 
     dialog.querySelector("[data-dialog-close]")?.addEventListener("click", closeDialog);
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && dialog.open) {
+        event.preventDefault();
+        closeDialog();
+      }
+    });
+    dialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closeDialog();
+    });
     dialog.addEventListener("click", (event) => {
       const bounds = dialog.getBoundingClientRect();
       const outside =
@@ -130,8 +214,10 @@
       if (outside) closeDialog();
     });
     dialog.addEventListener("close", () => {
+      document.body.classList.remove("dialog-open");
       image.removeAttribute("src");
       image.alt = "";
+      lastTrigger?.focus();
     });
   }
 
