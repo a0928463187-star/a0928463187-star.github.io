@@ -1973,6 +1973,16 @@ h3 {
   border-left-color: var(--amber);
 }
 
+.story-highlight {
+  color: #824900;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.16em;
+  text-decoration-skip-ink: auto;
+}
+
 .career-card {
   margin-bottom: 16px;
   overflow: hidden;
