@@ -2030,6 +2030,25 @@ h3 {
 
 .source-groups .source-panel {
   padding: 24px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.source-groups .source-panel h2 {
+  color: var(--navy);
+}
+
+.source-groups .source-panel .source-list li {
+  border-bottom-color: var(--line);
+}
+
+.source-groups .source-panel .source-list a {
+  color: var(--navy-2);
+}
+
+.source-groups .source-panel .source-list a:hover {
+  color: #815000;
 }
 
 .not-found-panel {
