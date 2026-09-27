@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1672" height="941" viewBox="0 0 1672 941" role="img" aria-labelledby="title desc">
+  <title id="title">社區管理會議情境示意圖</title>
+  <desc id="desc">社區經理與管理委員圍桌討論社區設備與修繕事項。</desc>
+  <defs>
+    <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#fffaf0"/><stop offset="1" stop-color="#e7edf3"/></linearGradient>
+    <linearGradient id="window" x2="1" y2="1"><stop stop-color="#c5d9e6"/><stop offset="1" stop-color="#f8e9ca"/></linearGradient>
+    <linearGradient id="table" x2="0" y2="1"><stop stop-color="#d5b779"/><stop offset="1" stop-color="#98764b"/></linearGradient>
+  </defs>
+  <rect width="1672" height="941" fill="url(#wall)"/>
+  <rect x="70" y="72" width="620" height="330" rx="8" fill="#fff" stroke="#d9bd83" stroke-width="8"/>
+  <rect x="91" y="93" width="578" height="288" fill="url(#window)"/>
+  <path d="M91 293h578v88H91z" fill="#c9d8da"/>
+  <path d="M91 325l112-106 92 79 112-128 128 135 88-78 56 44v110H91z" fill="#71899a" opacity=".52"/>
+  <path d="M91 355l104-67 78 47 129-89 120 91 93-53 64 44v53H91z" fill="#405d70" opacity=".74"/>
+  <rect x="1110" y="105" width="430" height="265" rx="12" fill="#fff" stroke="#d9bd83" stroke-width="5"/>
+  <rect x="1142" y="136" width="366" height="203" rx="6" fill="#eef2f5"/>
+  <path d="M1180 290h290M1180 254h205M1180 218h246M1180 182h168" stroke="#aab8c4" stroke-width="10" stroke-linecap="round"/>
+  <rect y="668" width="1672" height="273" fill="#d8d0c3"/>
+  <path d="M0 737h1672" stroke="#c4b79f" stroke-width="5"/>
+  <!-- 社區委員 -->
+  <g stroke="#10243a" stroke-width="8" stroke-linejoin="round">
+    <path d="M268 492c0-78 54-128 120-128s119 50 119 128v111H268z" fill="#456b86"/>
+    <circle cx="388" cy="352" r="67" fill="#d6a47e"/>
+    <path d="M321 344c1-70 111-96 144-28l-7 32c-20-23-78-29-132-4z" fill="#263341"/>
+    <path d="M613 493c0-75 50-121 112-121s112 46 112 121v110H613z" fill="#b57558"/>
+    <circle cx="725" cy="357" r="65" fill="#e1b393"/>
+    <path d="M659 350c4-70 112-94 143-24l-6 42c-27-28-92-30-137 0z" fill="#433531"/>
+    <path d="M1036 491c0-78 51-126 117-126s117 48 117 126v112h-234z" fill="#738b70"/>
+    <circle cx="1153" cy="353" r="67" fill="#d5a27c"/>
+    <path d="M1086 341c7-76 121-91 143-17l-9 37c-34-25-83-26-128-1z" fill="#39302e"/>
+    <path d="M1330 500c0-71 48-116 108-116s108 45 108 116v103h-216z" fill="#8e7894"/>
+    <circle cx="1438" cy="365" r="62" fill="#edc4a2"/>
+    <path d="M1377 354c4-68 109-87 131-19l-8 36c-27-23-79-28-119-3z" fill="#4a3932"/>
+  </g>
+  <!-- 社區經理 -->
+  <g stroke="#10243a" stroke-width="9" stroke-linejoin="round">
+    <path d="M350 616c0-115 94-181 201-181s201 66 201 181v87H350z" fill="#102c49"/>
+    <circle cx="551" cy="385" r="86" fill="#dca985"/>
+    <path d="M466 375c0-91 143-131 181-35l-8 51c-33-33-109-38-165-1z" fill="#273342"/>
+    <path d="M478 476l73 59 74-59 62 41-53 128H467l-52-128z" fill="#f5f2eb"/>
+    <path d="M551 535l-33 110 33 46 34-46z" fill="#d3ad70"/>
+  </g>
+  <path d="M230 600h1210l-82 199H313z" fill="url(#table)" stroke="#10243a" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M412 646l170-22 111 32-168 26zM823 640l180-21 111 29-176 27zM1119 638l131-16 91 25-134 20z" fill="#fffaf0" stroke="#c4cbd0" stroke-width="5"/>
+  <path d="M463 660l145-18M861 656l153-18M1151 651l109-14" stroke="#718298" stroke-width="5" stroke-linecap="round"/>
+  <path d="M354 788l-29 153M1300 788l40 153" stroke="#6f5637" stroke-width="18"/>
+</svg>

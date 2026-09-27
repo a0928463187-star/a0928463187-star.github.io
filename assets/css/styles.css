@@ -532,17 +532,6 @@ h3 {
   border-left: 4px solid var(--gold);
 }
 
-.career-feature::after {
-  position: absolute;
-  right: 22px;
-  bottom: -22px;
-  z-index: -1;
-  width: 75%;
-  height: 70%;
-  border: 1px solid var(--navy);
-  content: "";
-}
-
 .feature-period {
   color: var(--gold);
   font-weight: 800;
@@ -1874,6 +1863,19 @@ h3 {
   text-align: center;
 }
 
+.dashboard-portrait-tagline {
+  position: absolute;
+  right: 7%;
+  bottom: 4%;
+  left: 7%;
+  margin: 0;
+  color: #fff7e8;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
 .dashboard-metric,
 .dashboard-method {
   display: flex;
@@ -1884,6 +1886,11 @@ h3 {
 }
 
 .dashboard-metric {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: center;
+  align-items: center;
+  column-gap: clamp(16px, 2.8vw, 34px);
   background: var(--amber);
   color: var(--navy);
 }
@@ -1896,10 +1903,23 @@ h3 {
 }
 
 .dashboard-metric strong {
-  display: block;
-  margin-block: 6px;
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
   font-size: clamp(3rem, 6vw, 5.5rem);
   line-height: 1;
+}
+
+.dashboard-metric small {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+  line-height: 1.25;
+}
+
+.dashboard-metric > span {
+  grid-column: 1 / -1;
 }
 
 .dashboard-metric small,
@@ -2264,8 +2284,15 @@ h3 {
 
   .dashboard-portrait figcaption {
     right: 11%;
-    bottom: 8%;
+    bottom: 12%;
     left: 11%;
+  }
+
+  .dashboard-portrait-tagline {
+    right: 11%;
+    bottom: 3%;
+    left: 11%;
+    font-size: 0.82rem;
   }
 
   .dashboard-metric,
