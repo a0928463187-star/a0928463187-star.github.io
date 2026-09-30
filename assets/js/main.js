@@ -158,6 +158,12 @@
     });
 
     search?.addEventListener("input", applyGalleryFilters);
+    document.querySelectorAll("[data-featured-credential]").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (search) search.value = "";
+        buttons.find(button => button.dataset.filter === "全部")?.click();
+      });
+    });
   }
 
   const dialog = document.querySelector("#credential-dialog");
