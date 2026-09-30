@@ -1,4 +1,6 @@
 /* Evidence-first recruiter overview. Keep content readable without scripts. */
+.dashboard-principle-note { color:#d4ddea; font-size:1rem; line-height:1.85; margin:0 0 24px; }
+.flow-priority { padding:16px 18px; background:#fff1d0; color:#102038; border-left:4px solid #ba6d00; line-height:1.85; margin:0 0 22px; }
 .capability-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
 .capability-card { padding:28px; border:1px solid #d7deea; border-top:4px solid #3d5afe; border-radius:12px; background:#fff; display:flex; flex-direction:column; align-items:flex-start; }
 .capability-card h3 { font-size:1.2rem; line-height:1.7; margin:10px 0; }

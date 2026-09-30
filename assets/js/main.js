@@ -176,9 +176,9 @@
     document.querySelectorAll(".credential-open").forEach((button) => {
       button.addEventListener("click", () => {
         lastTrigger = button;
-        const itemTitle = button.dataset.title ?? "紀錄原圖";
+        const itemTitle = button.dataset.title ?? "紀錄大圖";
         image.src = button.dataset.full;
-        image.alt = `${itemTitle}原圖`;
+        image.alt = `${itemTitle}公開處理版大圖`;
         title.textContent = itemTitle;
 
         if (button.dataset.referenceUrl) {
