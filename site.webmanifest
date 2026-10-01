@@ -1,11 +1,11 @@
 {
-  "name": "劉家豪｜物業實務",
+  "name": "劉家豪｜現場營運・物業管理・團隊管理實務工作者",
   "short_name": "劉家豪",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#edf1f7",
-  "theme_color": "#081526",
+  "background_color": "#ffffff",
+  "theme_color": "#0b1f33",
   "icons": [
     {
       "src": "assets/icons/favicon.svg",

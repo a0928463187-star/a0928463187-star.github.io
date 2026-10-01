@@ -122,6 +122,21 @@
     updateControls();
   }
 
+  const revealHashTarget = () => {
+    let id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    let parent = target.closest("details");
+    while (parent) {
+      parent.open = true;
+      parent = parent.parentElement?.closest("details");
+    }
+    if (id.startsWith("credential-record-")) target.scrollIntoView({block:"start"});
+  };
+  window.addEventListener("hashchange", revealHashTarget);
+  revealHashTarget();
+
   const gallery = document.querySelector("[data-gallery]");
   if (gallery) {
     const cards = [...gallery.querySelectorAll("[data-category]")];
@@ -160,6 +175,8 @@
     search?.addEventListener("input", applyGalleryFilters);
     document.querySelectorAll("[data-featured-credential]").forEach((link) => {
       link.addEventListener("click", () => {
+        const disclosure = document.querySelector("#all-credentials");
+        if (disclosure) disclosure.open = true;
         if (search) search.value = "";
         buttons.find(button => button.dataset.filter === "全部")?.click();
       });
