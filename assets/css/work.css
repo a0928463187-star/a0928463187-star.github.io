@@ -270,3 +270,20 @@ main p { line-height:1.85; }
   .faq-group > header > .visual-icon { display:inline-block; margin:0 12px 0 0; }
   .faq-group > header h2 { margin-top:12px; }
 }
+
+/* Authorship and evidence: readable text, no new library or tracking. */
+.author-context,.section-reference,.case-record-note,.recruitment-contact { overflow-wrap:anywhere; }
+.author-context { margin:24px 0 0; padding:18px 20px; border-left:3px solid var(--gold); background:var(--ivory); color:var(--navy); font-size:16px; line-height:1.9; }
+.author-context a,.article-byline a,.section-reference a,.recruitment-contact a { text-decoration:underline; text-underline-offset:4px; }
+.article-prose .section-reference { margin:22px 0 0; padding:18px 20px; border-left:2px solid var(--gold); background:#f0f3f5; color:var(--navy); }
+.article-prose .section-reference p,.article-prose .section-reference li { margin:0; font-size:16px; line-height:1.9; }
+.section-reference ul { margin:12px 0 0; padding-left:22px; }
+.case-record-note { margin:28px 0; padding:24px; border:1px solid var(--line); border-left:3px solid var(--gold); background:var(--paper); }
+.case-evidence-points { margin:20px 0 0; }
+.case-evidence-points > div + div { margin-top:18px; padding-top:18px; border-top:1px solid var(--line); }
+.case-evidence-points dt { font-weight:700; color:var(--navy); }
+.case-evidence-points dd { margin:8px 0 0; line-height:1.9; }
+.recruitment-contact { margin:36px 0; padding:24px; border:1px solid var(--line); border-left:3px solid var(--gold); }
+.recruitment-contact h2 { margin-top:0; }
+.recruitment-contact a { font-weight:700; }
+@media(max-width:600px) { .author-context,.article-prose .section-reference,.case-record-note,.recruitment-contact { padding:18px; } }
