@@ -25,7 +25,11 @@
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeNav();
+      if (event.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
+        const returnFocus = primaryNav.contains(document.activeElement);
+        closeNav();
+        if (returnFocus) navToggle.focus();
+      }
     });
 
     window.addEventListener("resize", () => {
@@ -127,6 +131,11 @@
     try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
     const target = document.getElementById(id);
     if (!target) return;
+    if (id.startsWith("credential-record-") && target.hidden) {
+      const search = document.querySelector("[data-gallery-search]");
+      if (search) search.value = "";
+      document.querySelector('[data-filter="全部"]')?.click();
+    }
     let parent = target.closest("details");
     while (parent) {
       parent.open = true;

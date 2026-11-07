@@ -287,3 +287,7 @@ main p { line-height:1.85; }
 .recruitment-contact h2 { margin-top:0; }
 .recruitment-contact a { font-weight:700; }
 @media(max-width:600px) { .author-context,.article-prose .section-reference,.case-record-note,.recruitment-contact { padding:18px; } }
+
+/* Match the light page palette so all error-page copy stays legible. */
+.page-404 .not-found-panel { background:var(--ivory); color:var(--ink); }
+.page-about .education-note .eyebrow { color:var(--gold-light); }
